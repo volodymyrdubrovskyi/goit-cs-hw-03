@@ -78,3 +78,22 @@ where users.email like '%@example.com'
 select *
 from tasks
 where tasks.description = ''
+
+
+--Вибрати користувачів та їхні завдання, які є у статусі 'in progress'
+select fullname, title, description
+from (
+	select users.fullname as fullname, tasks.title as title, tasks.description as description, status.name as name
+	from ((tasks
+	inner join users on tasks.user_id = users.id )
+	inner join status on tasks.status_id = status.id )
+)
+where name = 'in progress'
+
+
+--Отримати користувачів та кількість їхніх завдань
+select users.fullname, count(tasks.id) as tasks_count
+from tasks
+left join users
+on tasks.user_id = users.id 
+group by users.fullname
