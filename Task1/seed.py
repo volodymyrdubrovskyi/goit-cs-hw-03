@@ -20,7 +20,6 @@ for _ in range(1000): # Кількість користувачів
         c.execute("INSERT INTO tasks (title, description, status_id, user_id) VALUES (%s, %s, %s, %s)",
                    (fake.word(), fake.word(), random.choice(status_ids), user_id))
 
-
 try:
     conn.commit()
 except psycopg2.DatabaseError as err:
