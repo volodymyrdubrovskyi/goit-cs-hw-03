@@ -98,7 +98,7 @@ if __name__ == "__main__":
             result = update_age(pk, age)
             print(result)
         case "delete":
-            doc = read_by_name()
+            doc = read_by_name(name)
             pk = doc["_id"]
             result = delete()
             print(result)
